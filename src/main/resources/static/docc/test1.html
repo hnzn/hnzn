@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>2018-4-1</title>
+		<link rel="stylesheet" type="text/css" href="../js/tuo/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="../js/tuo/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="../js/tuo/css/component.css" />
+		<script src="../js/tuo/js/modernizr.custom.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+			img{
+				width:100%;
+				height: 100%;
+			}
+			li{
+				margin: 0;
+				border-width: 5px 5px;
+			}
+		</style>
+		<script type="text/javascript">
+		function showT(id){
+			$('#'+id).show();
+			setTimeout('$("#'+id+'").hide()',1200);
+		}
+		function clickShow(str){
+			var tag = document.getElementById('showId');
+			tag.innerHTML = str;
+		}
+		</script>
+	</head>
+	<body>
+		<div class="container" onclick="showT('s1')">		
+			<!-- <header>
+				<h1>图片堆叠效果 <span>可拖动并且非常具有弹性图片展示效果</span></h1>
+			</header> -->
+			<ul id="elasticstack" class="elasticstack"  >
+				<li  style="border-width: 5px 5px;"  ontouchmove="showT('s1')"><img src="../img/lov/1.jpg" alt="01"/><h6 style="display: none;position: absolute;z-index: 10;bottom: 10px;right: 20px;color: white;font-weight: lighter;"  id="s1">既相遇</h6></li>
+				<li  style="border-width: 5px 5px;" ontouchmove="showT('s2')"><img src="../img/lov/2.jpg" alt="02"/><h6 style="display: none;position: absolute;z-index: 10;bottom: 10px;right: 20px;color: white;font-weight: lighter;"  id="s2">必相惜</h6></li>
+				<li  style="border-width: 5px 5px;" ontouchmove="showT('s3')"><img src="../img/lov/3.jpg" alt="03"/><h6 style="display: none;position: absolute;z-index: 10;bottom: 10px;right: 20px;color: white;font-weight: lighter;"  id="s3">既有缘</h6></li>
+				<li  style="border-width: 5px 5px;" ontouchmove="showT('s4')"><img src="../img/lov/4.jpg" alt="04"/><h6 style="display: none;position: absolute;z-index: 10;bottom: 10px;right: 20px;color: white;font-weight: lighter;"  id="s4">必在意</h6></li>
+				<li  style="border-width: 5px 5px;" ontouchmove="showT('s5')"><img src="../img/lov/5.jpg" alt="05"/><h5 style="display: none;position: absolute;z-index: 10;top: 10px;right: 20px;"  id="s5">愚人节快乐</h5></li>				
+			</ul>
+		</div><!-- /container -->
+		<script src="../js/tuo/js/draggabilly.pkgd.min.js"></script>
+		<script src="../js/tuo/js/elastiStack.js"></script>
+		<script>
+			new ElastiStack( document.getElementById( 'elasticstack' ), {
+			    // distDragBack: if the user stops dragging the image in a area that does not exceed [distDragBack]px 
+			    // for either x or y then the image goes back to the stack 
+			    distDragBack : 200,
+			    // distDragMax: if the user drags the image in a area that exceeds [distDragMax]px 
+			    // for either x or y then the image moves away from the stack 
+			    distDragMax : 450,
+			    // callback
+			    onUpdateStack : function( current ) { return false; }
+			} );
+			
+
+			
+			var load = function(){
+	
+				/* $($('img').get(4)).show('slow');
+				setTimeout('$($("img").get(3)).show("slow")',500);
+				setTimeout('$($("img").get(2)).show("slow")',1000);
+				setTimeout('$($("img").get(1)).show("slow")',1500);
+				setTimeout('$($("img").get(0)).show("slow")',2000); */
+			}
+			
+			$(".btn-cancel").on("touchstart",function(e){
+		        e.preventDefault(); //注意这句，加到你header的点击事件里面去
+		        ThisObj.find('option').eq(0).attr("selected","selected");
+		        $(".address-box").stop().animate({left:"100%"});
+		    })
+
+			
+			
+		</script>
+	</body>
+</html>
