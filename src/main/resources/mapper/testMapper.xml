@@ -5,6 +5,6 @@
 <!-- 命名空间 是必须的 -->
 <mapper namespace="com.jq.dao.TestDAO">
     <select id="getTest" resultType="java.lang.String">
-        select * from test
+        select id from test
     </select>
 </mapper>

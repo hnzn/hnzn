@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class TestServer {
 
-    //@Autowired
+    @Autowired
     private TestDAO testDAO;
 
     public List getTest(){

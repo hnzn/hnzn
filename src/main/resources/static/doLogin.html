@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/MD5.js"></script>
+</head>
+<body style="background-image: url('/images/fulls/05.jpg');background-attachment: fixed;background-repeat: no-repeat;background-size: cover;">
+<div style="margin:auto;width: 300px;height:150px;padding:20px;position: absolute ;  top: 0;left: 0;right: 0;bottom: 0;border: 1px black solid;">
+	<form action="/login" name="lg" method="post" onsubmit='return doLogin()'>
+	 <p>用户名：<input type="text" name="username"/></p>
+	 <p>密&nbsp;&nbsp;&nbsp;码：<input type="password" name="pwd"/></p>
+	 <input type="hidden" name="password"/>
+	 <button type="submit">登录</button>
+	 </form>
+</div>	 
+</body>
+<script type="text/javascript">
+function doLogin(){
+	var password = $("[name=pwd]").val();
+	var username = $("[name=username]").val();
+	var pswd = MD5(username +"#" + password);
+	console.log(pswd);
+	$("[name=password]").val(pswd);
+	return ture;
+	/* data = {password:pswd,username:username}; */
+	
+/* $.ajax({ 
+	url:"/login",
+	data:data,
+	type:"get",
+	dataType:"json",
+ 	beforeSend:function(){
+		alert('开始登录，请注x意后台控制台。');
+	}, 
+	success:function(data){
+    	alert(data.msg);
+	},
+	error:function(e){
+		console.log(e,e.message);
+		alert(e);
+	}
+}); */
+}
+
+</script>
+</html>

@@ -13,15 +13,16 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jq.common.shiro.TokenManager;
 import com.jq.service.TestServer;
 import com.jq.service.mq.MQProducer;
-import com.jq.util.TokenManager;
 
 /**
  * Created by hnznw on 2017/12/11.
@@ -43,14 +44,14 @@ public class Test {
     }
     
     @GetMapping("/wel")
-    public String getWel(){
-
+    public String getWel(HttpServletRequest servletRequest,HttpServletResponse servletResponse){
         return "你好";
     }
     
+    @RequiresPermissions("11")
     @GetMapping("/pMsg")
     public String pMsg(@RequestParam("msg") String msg) {
-    	mqProducer.createMsg(msg);
+    	//mqProducer.createMsg(msg);
     	return "成功";
     }
     
